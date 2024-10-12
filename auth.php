@@ -29,6 +29,7 @@ if ($action === 'signup') {
     if (!$email || !$password || !$dateOfBirth) {
         die(json_encode(['error' => 'Missing required fields for signup', 'user' => $userProfile, 'credentials' => $credentials]));
     }
+    
 
     // Check if email is already registered
     $checkQuery = "SELECT * FROM Transaction_User_Account WHERE email = ?";
