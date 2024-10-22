@@ -47,7 +47,7 @@ if ($email) {
                     'profilePicture' => $userData['ProfilePicture'],
                     'fullName' => $userData['FullName'],
                     'age' => $userData['Age'],
-                    'userLinkGUID' => $userData['UserLinkGUID'],
+                    'userLinkGUID' => "https://pinoylancers.tech/jowa/api/web/rateMe.php?UserLinkGUID=" . $userData['UserLinkGUID'],
                     'firstName' => $userData['FirstName'],
                     'lastName' => $userData['LastName'],
                     'dateOfBirth' => $userData['DateOfBirth']

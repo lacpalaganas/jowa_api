@@ -114,12 +114,12 @@ try {
     $stmt = $connection->prepare($ratingReviewsQuery);
     $stmt->bind_param("i", $rateMeUserProfileID); // Bind the userProfileID and rateMeUserProfileID
     $stmt->execute();
-    $stmt->bind_result($profilePicture);
+    $stmt->bind_result($profilePicture_);
 
     $ratingReviews = [];
     while ($stmt->fetch()) {
     // Append the profile picture to the ratingReviews array
-    $ratingReviews[] = $profilePicture;
+    $ratingReviews[] = $profilePicture_;
 }
 $stmt->close();
     // Prepare response
