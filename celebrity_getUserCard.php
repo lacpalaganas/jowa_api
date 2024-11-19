@@ -29,7 +29,7 @@ try {
             DateOfBirth
         FROM 
             Transaction_User_Profile
-        WHERE UserProfileID <> ? AND IsCelebrity = 0
+        WHERE UserProfileID <> ? AND IsCelebrity = 1
         ORDER BY RAND()
         LIMIT 1
     ";

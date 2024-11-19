@@ -21,6 +21,7 @@ if (!isset($data['ratings']) || !is_array($data['ratings']) || !isset($data['oth
 // Extract other details
 $userProfileID = $data['otherDetails']['userProfileID'] ?? null;
 $ratedByDetails = $data['otherDetails']['RatedByDetails'] ?? null;
+$review= $data['review'] ?? null;
 
 if (!$userProfileID || !$ratedByDetails) {
     echo json_encode(['error' => 'UserProfileID and RatedByDetails are required.']);
@@ -56,10 +57,10 @@ try {
     // Insert a new rating into Transaction_User_Rating table
     $stmt = $connection->prepare("
         INSERT INTO Transaction_User_Rating 
-        (UserProfileID, RatedByDetails, IsCompleted, DateCreated, Looks, Education, Personality, RatingMethodID) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        (UserProfileID, RatedByDetails, IsCompleted, DateCreated, Looks, Education, Personality, RatingMethodID, Review) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
-    $stmt->bind_param("isisiiii", $userProfileID, $ratedByDetails, $isCompleted, $dateCreated, $looksRating, $educationRating, $personalityRating, $ratingMethodID);
+    $stmt->bind_param("isisiiiis", $userProfileID, $ratedByDetails, $isCompleted, $dateCreated, $looksRating, $educationRating, $personalityRating, $ratingMethodID, $review);
     $stmt->execute();
     $stmt->close();
 
